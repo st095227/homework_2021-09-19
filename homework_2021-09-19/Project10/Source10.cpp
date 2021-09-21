@@ -11,8 +11,7 @@ int main(int argc, char* argv[])
 	cin >> a;
 	cin >> b;
 	c = (a/b) * b + (b/a) * a;
-	mod = a % b + b % a;
-	mod = (mod % a) % b;
+	mod = (a % b)%a + (b % a)%b;
 	c += mod;
 	c = c / (c / (a + b) + 1);
 	cout << c << endl;
