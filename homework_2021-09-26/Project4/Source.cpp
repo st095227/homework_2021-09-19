@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 	int d = 0;
 	cin >> a >> b >> c >> d;
 	
-	if ((b == 0 && a == 0) && (-d%c!=0))
+	if (b == 0 && a == 0)
 	{
 		cout << "INF" << endl;
 	}
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 	{
 		cout << "NO" << endl;
 	}
-	else if (b% a == 0 && ((b / a) != (d / c)))
+	else if (b% a == 0 && (((b / a) != (d / c)) || (d%c)!=0))
 	{
 		cout << -b / a << endl;
 	}
