@@ -9,7 +9,6 @@ int main(int argc, char* argv[])
 	int c = 0;
 	int d = 0;
 	cin >> a >> b >> c >> d;
-	
 	if (b == 0 && a == 0)
 	{
 		cout << "INF" << endl;

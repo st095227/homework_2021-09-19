@@ -37,7 +37,6 @@ int main(int argc, char* argv[])
         c1 = c; 
     }
     b1 = b1 - a1 - c1;
-    
     if (a1 >= c1+b1)
     {
         cout << "impossible" << endl;

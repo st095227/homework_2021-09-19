@@ -8,7 +8,6 @@ int main(int argc, char* argv[])
     int m = 0;
     int k = 0;
     cin >> n >> m >> k;
-
     if (((k % n == 0) && (k <= n * m)) || ((k % m == 0) && (k <= n * m))) 
     { 
         cout << "YES"<< endl;

@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) 
+{
     int a1 = 0;
     int b1 = 0;
     int a2 = 0;
