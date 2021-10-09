@@ -10,11 +10,11 @@ int main(int argv, char* argc[])
 	long int nf = 1;
 	long int knf = 1;
 	long int r = 0;
-	for (int i = k+1; i <= n; ++i)
+	for (int i = k + 1; i <= n; ++i)
 	{
 		nf = nf * i;
 	}
-	for (int i = 1; i <= (n-k); ++i)
+	for (int i = 1; i <= (n - k); ++i)
 	{
 		knf = knf * i;
 	}
