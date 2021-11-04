@@ -4,31 +4,15 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	unsigned int a = 0;
-	cin >> a;
-	bool number[32] = { 0 };
-	for (int i = 0; i < 32; ++i)
-	{
-		number[i] = a & (1 << i);
-	}
-	cout << "original number : ";
-	for (int i = 31; i >= 0; --i)
-	{
-		cout << number[i];
-	}
-	cout << endl;
-	short firstPosition = 0;
-	short secondPosition = 0;
-	cin >> firstPosition >> secondPosition;
-	bool buf = false;
-	buf = number[firstPosition];
-	number[firstPosition] = number[secondPosition];
-	number[secondPosition] = buf;
-	cout << "changed number :  ";
-	for (int i = 31; i >= 0; --i)
-	{
-		cout << number[i];
-	}
-	cout << endl;
+	int a = 0;
+	int f = 0;
+	int s = 0;
+	cin >> a >> f >> s;
+	int fbit = (a & (1 << f)) >> f; // значение первого (перемещаемого) бита
+	int sbit = (a & (1 << s)) >> s; // значение второго бита
+	a = a & (~(1 << f)); // "выкалываем" два бита из числа
+	a = a & (~(1 << s));
+	a = a | (fbit << s) | (sbit << f); // заполняем "выколотые" позиции нужными битами (первый во вторую позицию и наоборот)
+	cout << a << endl;
 	return EXIT_SUCCESS;
 }
