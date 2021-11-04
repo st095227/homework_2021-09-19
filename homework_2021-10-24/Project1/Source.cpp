@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(int argv, char* argc[])
+int main(int argc, char* argv[])
 {
 	int a[100] = { 0 };
 	int n = 0;
