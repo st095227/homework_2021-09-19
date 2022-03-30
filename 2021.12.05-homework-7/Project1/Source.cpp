@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 	cin >> r;
 	circle(r);
 	cout << "number: ";
-    cin >> n;
+        cin >> n;
 	cout << f(n, k) << endl;
 	return EXIT_SUCCESS;
 }
