@@ -126,14 +126,42 @@ using namespace std;
 
 	void ComplexN::root(int m)
 	{
-		double d = pow(module(), (1 / m));
-		double g = atan(this->b / this->a);
-		cout << "root of " << m << ':' << endl;
-		double pi2 = 6.28319;
-		for (int i = 0; i < m; ++i)
+		if (a == 0 && b == 0)
 		{
-			ComplexN com(d * cos((g + pi2 * i) / m), d * sin((g + pi2 * i) / m));
-			com.print();
+			ComplexN com(0, 0);
+			cout << "root of " << m << ':' << endl;
+			for (int i = 0; i < m; ++i)
+			{
+				com.print();
+			}
+		}
+		else 
+		{
+			double pi = 3.14159265359;
+			double g = 0;
+			if (this->a>=0 && this->b>=0)
+			{ 
+				g = asin(this->b / module());
+			}
+			else if (this->a < 0 && this->b >= 0)
+			{
+				g = acos(this->a / module());
+			}
+			else if (this->a < 0 && this->b < 0)
+			{
+				g = asin(this->b / module()) + pi;
+			}
+			else if (this->a >= 0 && this->b < 0)
+			{
+				g = asin(this->b / module());
+			}
+			double d = pow(module(), (1 / m));
+			cout << "root of " << m << ':' << endl;
+			for (int i = 0; i < m; ++i)
+			{
+				ComplexN com(d * cos((g + pi * 2 * i) / m), d * sin((g + pi * 2 * i) / m));
+				com.print();
+			}
 		}
 	}
 

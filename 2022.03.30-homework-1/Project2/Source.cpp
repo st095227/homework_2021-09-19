@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	ComplexN c1(1, 8), c0(1,8), c4(1,0);
+	ComplexN c1(1, 8), c0(1,8), c4(0,0);
 	c1.print();
 	double c = c1.module();
 	ComplexN c2(32, 6);
@@ -16,7 +16,7 @@ int main()
 	c3.print();
 	c2 = c1.power(2);
 	c2.print();
-	c4.root(2);
+	c4.root(4);
 	c4 = c0 + 31;
 	c4.print();
 	return 0;
