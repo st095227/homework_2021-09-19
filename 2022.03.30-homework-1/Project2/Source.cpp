@@ -6,18 +6,14 @@ using namespace std;
 
 int main()
 {
-	ComplexN c1(1, 8), c0(1,8), c4(0,0);
-	c1.print();
-	double c = c1.module();
-	ComplexN c2(32, 6);
-	c2.print();
-	ComplexN c3(2,4);
-	c3 = c1/c2;
-	c3.print();
-	c2 = c1.power(2);
-	c2.print();
-	c4.root(4);
-	c4 = c0 + 31;
-	c4.print();
+	ComplexN z1(3, 1);
+	ComplexN z2(5, -2);
+	cout << z1 * z2 << endl;
+	cout << z1 / z2 << endl;
+	cout << 3 * z1 + 4 * z2 << endl;
+	cout << z1.module() << endl; //модуль числа
+	cout << z2.arg() << endl;
+	cout << z1.reverse() << endl; //обратное число
+	z1.root(5, cout); //вывод в поток cout формулы корней пятой степени
 	return 0;
 }

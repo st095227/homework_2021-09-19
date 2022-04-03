@@ -24,6 +24,7 @@ public:
 	
 		double module();
 		ComplexN conjugate();
+		ComplexN reverse();
 
 		ComplexN operator=(const ComplexN& complex);
 	
@@ -37,6 +38,11 @@ public:
 		friend ComplexN operator+(double m, const ComplexN& c1);
 		//friend ComplexN operator+(const ComplexN& c1, double m);
 
+		ComplexN operator-(const ComplexN& c1);
+		friend ComplexN operator-(const ComplexN& c1, const ComplexN& c2);
+		friend ComplexN operator-(double m, const ComplexN& c1);
+		friend ComplexN operator-(const ComplexN& c1, double m);
+
 		friend ComplexN operator*(double m, const ComplexN& c1);
 		friend ComplexN operator*(const ComplexN& c1, double m);
 		friend ComplexN operator*(const ComplexN& c1, const ComplexN& c2);
@@ -44,8 +50,9 @@ public:
 		friend ComplexN operator/(const ComplexN& c1, double m);
 		friend ComplexN operator/(double m, const ComplexN& c1);
 		friend ComplexN operator/(const ComplexN& c1, const ComplexN& c2);
+		friend std::ostream& operator<<(std::ostream& stream, const ComplexN& c1);
 
 		ComplexN power(int m);
-
-		void root(int m);
+		double arg();
+		void root(int m, std::ostream& stream);
 };

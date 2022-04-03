@@ -52,6 +52,11 @@ using namespace std;
 	{
 		return ComplexN(this->a, -this->b);
 	}
+	ComplexN ComplexN::reverse()
+	{
+		ComplexN c1(this->a/module(), -this->b/module());
+		return c1;
+	}
 
 	ComplexN ComplexN::operator=(const ComplexN& complex)
 	{
@@ -87,6 +92,23 @@ using namespace std;
 		return ComplexN(c1.a + m, c1.b);
 	}*/
 
+	ComplexN ComplexN::operator-(const ComplexN& c1)
+	{
+		return ComplexN(this->a - c1.a, this->b - c1.b);
+	}
+	ComplexN operator-(const ComplexN& c1, const ComplexN& c2)
+	{
+		return ComplexN(c1.a - c2.a, c1.b - c2.b);
+	}
+	ComplexN operator-(double m, const ComplexN& c1)
+	{
+		return ComplexN(m - c1.a, c1.b);
+	}
+	ComplexN operator-(const ComplexN& c1, double m)
+	{
+		return ComplexN(c1.a - m, c1.b);
+	}
+
 	ComplexN operator*(double m, const ComplexN& c1)
 	{
 		return ComplexN(m * c1.a, m * c1.b);
@@ -113,6 +135,30 @@ using namespace std;
 		return ComplexN((c1.a * c2.a + c1.b * c2.b) / (c2.a * c2.a + c2.b * c2.b), (-c1.a * c2.b + c1.b * c2.a) / (c2.a * c2.a + c2.b * c2.b));
 	}
 
+	std::ostream& operator<<(std::ostream& stream, const ComplexN& c1)
+	{
+		if (c1.b == 1)
+		{
+			stream << c1.a << '+' << 'i';
+			return stream;
+		}
+		else if (c1.b == -1)
+		{
+			stream << c1.a << '-' << 'i';
+			return stream;
+		}
+		else if (c1.b > 0)
+		{
+			stream << c1.a << '+' << c1.b << 'i';
+			return stream;
+		}
+		else if (c1.b < 0)
+		{
+			stream << c1.a << c1.b << 'i';
+			return stream;
+		}
+	}
+
 	ComplexN ComplexN::power(int m)
 	{
 		ComplexN cf(this->a, this->b);
@@ -124,23 +170,18 @@ using namespace std;
 		return cf;
 	}
 
-	void ComplexN::root(int m)
+	double ComplexN::arg()
 	{
-		if (a == 0 && b == 0)
+		double g = 0;
+		if (this->a == 0 && this->b == 0)
 		{
-			ComplexN com(0, 0);
-			cout << "root of " << m << ':' << endl;
-			for (int i = 0; i < m; ++i)
-			{
-				com.print();
-			}
+			cout << "the argument is not defined" << endl;
 		}
-		else 
+		else
 		{
 			double pi = 3.14159265359;
-			double g = 0;
-			if (this->a>=0 && this->b>=0)
-			{ 
+			if (this->a >= 0 && this->b >= 0)
+			{
 				g = asin(this->b / module());
 			}
 			else if (this->a < 0 && this->b >= 0)
@@ -155,12 +196,31 @@ using namespace std;
 			{
 				g = asin(this->b / module());
 			}
+		}
+		return g;
+	}
+
+	void ComplexN::root(int m, std::ostream& stream)
+	{
+		if (this->a == 0 && this->b == 0)
+		{
+			ComplexN com(0, 0);
+			cout << "root of " << m << ':' << endl;
+			for (int i = 0; i < m; ++i)
+			{
+				com.print();
+			}
+		}
+		else 
+		{
+			double pi = 3.14159265359;
+			double g = arg();
 			double d = pow(module(), (1 / m));
 			cout << "root of " << m << ':' << endl;
 			for (int i = 0; i < m; ++i)
 			{
 				ComplexN com(d * cos((g + pi * 2 * i) / m), d * sin((g + pi * 2 * i) / m));
-				com.print();
+				stream << com << endl;
 			}
 		}
 	}
