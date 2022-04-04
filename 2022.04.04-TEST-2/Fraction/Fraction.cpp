@@ -325,7 +325,11 @@ Fraction operator-(const Fraction& r1, const Fraction& r2)
 }
 ostream& operator<<(ostream& stream, const Fraction& r1)
 {
-	if (r1.q == 1)
+	if (r1.q == 0)
+	{
+		stream << "division by zero";
+	}
+	else if (r1.q == 1)
 	{
 		stream << r1.p;
 		return stream;
@@ -352,6 +356,11 @@ ostream& operator<<(ostream& stream, const Fraction& r1)
 	else if (r1.p > 0 && r1.q > 0)
 	{
 		stream << r1.p << "\\" << r1.q;
+		return stream;
+	}
+	else if (r1.p >0 && r1.q <0)
+	{
+		stream << -r1.p << "\\" << -r1.q;
 		return stream;
 	}
 	else

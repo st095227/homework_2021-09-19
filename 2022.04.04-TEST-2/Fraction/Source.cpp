@@ -21,7 +21,7 @@ int main()
 	{
 		cout << "2";
 	}
-	Fraction f4(8, -32), f0 (16, -72);
-	cout << endl << f4 + f0 << endl;
+	Fraction f4(-8, 32), f0 (16, -21);
+	cout << endl << f0+f4 << endl;
 	return 0;
 }
