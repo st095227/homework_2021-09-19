@@ -383,7 +383,7 @@ Fraction Fraction::absF()
 	{
 		return Fraction(-this->p, -this->q);
 	}
-	if (this->p > 0 && this->q < 0)
+	if (this->p >= 0 && this->q < 0)
 	{
 		return Fraction(this->p, -this->q);
 	}
